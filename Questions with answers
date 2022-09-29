@@ -1,0 +1,138 @@
+Q1. Write a program to find all pairs of an integer array whose sum is equal to a given number?
+
+        arr_1 = list(map(int,input("Enter the array: ").split()))
+        sum_1 = int(input("Enter the sum: "))
+
+        n = len(arr_1)
+
+        count = 0
+        for i in range(n):
+            for j in range(i+1, n):
+                if (arr_1[i] + arr_1[j]) == sum_1:
+                    count += 1
+
+        print(count)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+Q2. Write a program to reverse an array in place? In place means you cannot create a new array. You have to update the original array.
+
+        arr_1 = [1,2,3,4,5]
+        s,e = 0, len(arr_1)-1
+        while s<e:
+            arr_1[s], arr_1[e] = arr_1[e], arr_1[s]
+            s += 1
+            e -= 1
+        print(arr_1)
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3. Write a program to check if two strings are a rotation of each other?
+
+        str_1 = input("Enter string 1: ")
+        str_2 = input("Enter string 2: ")
+        size = len(str_1)
+        temp = str_1*2
+        set_1 = set({})
+        for i in range(size):
+            temp_2 = ""
+            for j in range(size):
+                temp_2 += temp[i+j]
+            set_1.add(temp_2)
+
+        if str_2 in temp:
+            print("Str_2 is Rotation of Str_1")
+        else:
+            print("Str_2 is not Rotation of Str_1")    
+            
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Q4. Write a program to print the first non-repeated character from a string?
+
+    def firstNonRepeatedCharacter(my_string):
+    chars = {}
+    for i in my_string:
+        if chars.get(i):
+            chars[i] += 1
+        else:
+            chars[i] = 1
+    
+    for i in my_string:
+        if chars[i] == 1:
+            return i
+            
+    string_1 = input("Enter the String: ")
+    c = firstNonRepeatedCharacter(string_1)
+    print(f"First non repeated char of --> {string_1} is: {c}")
+    
+    
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Q5. Read about the Tower of Hanoi algorithm. Write a program to implement it.
+
+    Rules:
+          Move one disk at a time
+          Top disc can only be moved to other rod
+          Disc can be placed on a bigger disc only
+          
+          
+      def TOH(number_of_dics, start, aux, end):
+      if number_of_dics == 1:
+          print("Move disk 1 from rod {} to rod {}".format(start,end))
+          return
+      TOH(number_of_dics-1, start,end,aux)
+      print("Move disk {} from rod {} to rod {}".format(number_of_dics, start, end))
+      TOH(number_of_dics-1, aux, start, end)
+  #     print("Move disk {} from rod {} to rod {}".format(number_of_dics, aux, end))
+
+      discs = int(input("Enter number of dics: "))
+      TOH(discs, 'A', 'B', 'C')     
+      
+-------------------------------------------------------------------------------------------------------------------------------------------      
+
+Q6. Read about infix, prefix, and postfix expressions. Write a program to convert postfix to prefix expression.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Q7. Write a program to convert prefix expression to infix expression.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Q8. Write a program to check if all the brackets are closed in a given code snippet.
+        open_braces = ['(','{','[']
+        close_braces = [')','}',']']
+
+        def balanced_paranthesis(str_1):
+            stack = []
+            for i in str_1:
+                if i in open_braces:
+                    stack.append(i)
+                elif i in close_braces:
+                    pos = close_braces.index(i)
+                    if (len(stack) > 0 and (open_braces[pos] == stack[len(stack)-1])):
+                        stack.pop()
+
+            if len(stack) == 0:
+                # balanced
+                return True
+            else:
+                return False
+
+        my_string = input("Enter the string: ")
+        status = balanced_paranthesis(my_string)
+        if status == True:
+            print("Brackets are: Balanced.")
+        else:
+            print("Brackets are: Not Balanced.")
+      
+      
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Q9. Write a program to reverse a stack.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Q10. Write a program to find the smallest number using a stack.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
